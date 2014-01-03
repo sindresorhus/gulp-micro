@@ -1,0 +1,41 @@
+{
+  "name": "gulp-micro",
+  "version": "0.0.0",
+  "description": "Ensure your micro-lib stays micro",
+  "license": "MIT",
+  "repository": "sindresorhus/gulp-micro",
+  "author": {
+    "name": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "http://sindresorhus.com"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "gulpplugin",
+    "micro",
+    "file",
+    "size",
+    "limit",
+    "small",
+    "tiny",
+    "module",
+    "library",
+    "framework"
+  ],
+  "dependencies": {
+    "gulp-util": "~2.2.0",
+    "map-stream": "0.0.4",
+    "filesize": "~2.0.0"
+  },
+  "devDependencies": {
+    "mocha": "*"
+  }
+}
