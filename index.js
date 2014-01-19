@@ -1,6 +1,6 @@
 'use strict';
 var gutil = require('gulp-util');
-var map = require('map-stream');
+var through = require('through2');
 var filesize = require('filesize');
 
 filesize = function (size) {return this.call(this, size, {spacer: ''})}.bind(filesize);
@@ -12,18 +12,25 @@ module.exports = function (options) {
 		throw new Error('gulp-micro: `limit` required.');
 	}
 
-	return map(function (file, cb) {
+	return through.obj(function (file, enc, cb) {
 		if (file.isNull()) {
-			return cb(null, file);
+			this.push(file);
+			return cb();
+		}
+
+		if (file.isStream()) {
+			this.emit('error', new gutil.PluginError('gulp-micro', 'Streaming not supported'));
+			return cb();
 		}
 
 		var size = file.contents.length;
 		var limit = options.limit;
 
 		if (size > limit) {
-			return cb(new Error('gulp-micro: ' + file.relative + ' (' + filesize(size) + ') ' + 'exceeds limit of ' + filesize(limit) + ' by ' + filesize(size - limit)));
+			this.emit('error', new gutil.PluginError('gulp-micro', file.relative + ' (' + filesize(size) + ') ' + 'exceeds limit of ' + filesize(limit) + ' by ' + filesize(size - limit)));
 		}
 
-		cb(null, file);
+		this.push(file);
+		cb();
 	});
 };
