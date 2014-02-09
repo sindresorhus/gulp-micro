@@ -1,15 +1,14 @@
 'use strict';
 var gutil = require('gulp-util');
 var through = require('through2');
-var filesize = require('filesize');
-
-filesize = function (size) {return this.call(this, size, {spacer: ''})}.bind(filesize);
+var chalk = require('chalk');
+var prettyBytes = require('pretty-bytes');
 
 module.exports = function (options) {
 	options = options || {};
 
 	if (typeof options.limit !== 'number') {
-		throw new Error('gulp-micro: `limit` required.');
+		throw new Error('gulp-micro: ' + chalk.bold('limit') + ' required.');
 	}
 
 	return through.obj(function (file, enc, cb) {
@@ -27,7 +26,7 @@ module.exports = function (options) {
 		var limit = options.limit;
 
 		if (size > limit) {
-			this.emit('error', new gutil.PluginError('gulp-micro', file.relative + ' (' + filesize(size) + ') ' + 'exceeds limit of ' + filesize(limit) + ' by ' + filesize(size - limit)));
+			this.emit('error', new gutil.PluginError('gulp-micro', file.relative + ' (' + prettyBytes(size) + ') ' + 'exceeds limit of ' + prettyBytes(limit) + ' by ' + prettyBytes(size - limit)));
 		}
 
 		this.push(file);
