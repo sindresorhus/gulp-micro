@@ -1,4 +1,4 @@
-# [gulp](http://gulpjs.com)-micro [![Build Status](https://secure.travis-ci.org/sindresorhus/gulp-micro.png?branch=master)](http://travis-ci.org/sindresorhus/gulp-micro)
+# [gulp](http://gulpjs.com)-micro [![Build Status](https://travis-ci.org/sindresorhus/gulp-micro.svg?branch=master)](https://travis-ci.org/sindresorhus/gulp-micro)
 
 > Ensure your micro-lib stays micro
 
@@ -9,14 +9,12 @@ Useful when paired with TravisCI to verify that all pull-requests are within the
 
 ## Install
 
-Install with [npm](https://npmjs.org/package/gulp-micro)
-
-```
-npm install --save-dev gulp-micro
+```bash
+$ npm install --save-dev gulp-micro
 ```
 
 
-## Example
+## Usage
 
 ```js
 var gulp = require('gulp');
@@ -47,4 +45,4 @@ Place [gulp-gzip](https://github.com/jstuckey/gulp-gzip) before this plugin to l
 
 ## License
 
-MIT © [Sindre Sorhus](http://sindresorhus.com)
+[MIT](http://opensource.org/licenses/MIT) © [Sindre Sorhus](http://sindresorhus.com)
