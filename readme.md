@@ -21,7 +21,7 @@ var gulp = require('gulp');
 var micro = require('gulp-micro');
 
 gulp.task('default', function () {
-	gulp.src('src/app.js')
+	return gulp.src('src/app.js')
 		.pipe(micro({limit: 1000}))
 		.pipe(gulp.dest('dist'));
 });
