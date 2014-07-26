@@ -26,7 +26,10 @@ module.exports = function (options) {
 		var limit = options.limit;
 
 		if (size > limit) {
-			this.emit('error', new gutil.PluginError('gulp-micro', file.relative + ' (' + prettyBytes(size) + ') ' + 'exceeds limit of ' + prettyBytes(limit) + ' by ' + prettyBytes(size - limit)));
+			this.emit('error', new gutil.PluginError('gulp-micro', file.relative + ' (' + prettyBytes(size) + ') ' + 'exceeds limit of ' + prettyBytes(limit) + ' by ' + prettyBytes(size - limit), {
+				fileName: file.path,
+				showStack: false
+			}));
 		}
 
 		this.push(file);
