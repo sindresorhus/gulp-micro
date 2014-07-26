@@ -1,6 +1,6 @@
 {
   "name": "gulp-micro",
-  "version": "0.1.3",
+  "version": "1.0.0",
   "description": "Ensure your micro-lib stays micro",
   "license": "MIT",
   "repository": "sindresorhus/gulp-micro",
