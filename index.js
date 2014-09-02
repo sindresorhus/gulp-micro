@@ -13,26 +13,26 @@ module.exports = function (options) {
 
 	return through.obj(function (file, enc, cb) {
 		if (file.isNull()) {
-			this.push(file);
-			return cb();
+			cb(null, file);
+			return;
 		}
 
 		if (file.isStream()) {
-			this.emit('error', new gutil.PluginError('gulp-micro', 'Streaming not supported'));
-			return cb();
+			cb(new gutil.PluginError('gulp-micro', 'Streaming not supported'));
+			return;
 		}
 
 		var size = file.contents.length;
 		var limit = options.limit;
 
 		if (size > limit) {
-			this.emit('error', new gutil.PluginError('gulp-micro', file.relative + ' (' + prettyBytes(size) + ') ' + 'exceeds limit of ' + prettyBytes(limit) + ' by ' + prettyBytes(size - limit), {
+			cb(new gutil.PluginError('gulp-micro', file.relative + ' (' + prettyBytes(size) + ') ' + 'exceeds limit of ' + prettyBytes(limit) + ' by ' + prettyBytes(size - limit), {
 				fileName: file.path,
 				showStack: false
 			}));
+			return;
 		}
 
-		this.push(file);
-		cb();
+		cb(null, file);
 	});
 };

@@ -1,7 +1,7 @@
 'use strict';
 var assert = require('assert');
 var gutil = require('gulp-util');
-var micro = require('./index');
+var micro = require('./');
 
 it('should limit the size of a module', function (cb) {
 	var stream = micro({limit: 1000});

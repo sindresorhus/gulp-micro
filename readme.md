@@ -9,7 +9,7 @@ Useful when paired with TravisCI to verify that all pull-requests are within the
 
 ## Install
 
-```bash
+```sh
 $ npm install --save-dev gulp-micro
 ```
 
@@ -33,7 +33,7 @@ gulp.task('default', function () {
 ### limit
 
 *Required*  
-Type: `Number`
+Type: `number`
 
 File size limit in bytes.
 
@@ -45,4 +45,4 @@ Place [gulp-gzip](https://github.com/jstuckey/gulp-gzip) before this plugin to l
 
 ## License
 
-[MIT](http://opensource.org/licenses/MIT) © [Sindre Sorhus](http://sindresorhus.com)
+MIT © [Sindre Sorhus](http://sindresorhus.com)
