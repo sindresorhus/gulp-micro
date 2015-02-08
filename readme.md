@@ -1,4 +1,4 @@
-# [gulp](http://gulpjs.com)-micro [![Build Status](https://travis-ci.org/sindresorhus/gulp-micro.svg?branch=master)](https://travis-ci.org/sindresorhus/gulp-micro)
+# gulp-micro [![Build Status](https://travis-ci.org/sindresorhus/gulp-micro.svg?branch=master)](https://travis-ci.org/sindresorhus/gulp-micro)
 
 > Ensure your micro-lib stays micro
 
@@ -9,7 +9,7 @@ Useful when paired with TravisCI to verify that all pull-requests are within the
 
 ## Install
 
-```sh
+```
 $ npm install --save-dev gulp-micro
 ```
 
