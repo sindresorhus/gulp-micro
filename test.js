@@ -1,18 +1,17 @@
-'use strict';
-var assert = require('assert');
-var gutil = require('gulp-util');
-var micro = require('./');
+import test from 'ava';
+import Vinyl from 'vinyl';
+import m from '.';
 
-it('should limit the size of a module', function (cb) {
-	var stream = micro({limit: 1000});
+test.cb('limits the size of a module', t => {
+	const stream = m({limit: 1000});
 
-	stream.on('error', function (err) {
-		assert(/fixture\.js/.test(err));
-		cb();
+	stream.once('error', err => {
+		t.regex(err.message, /fixture\.js/);
+		t.end();
 	});
 
-	stream.write(new gutil.File({
+	stream.end(new Vinyl({
 		path: 'fixture.js',
-		contents: new Buffer(1234)
+		contents: Buffer.alloc(1234)
 	}));
 });

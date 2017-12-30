@@ -2,9 +2,9 @@
 
 > Ensure your micro-lib stays micro
 
-![](screenshot.png)
+<img src="screenshot.png" width="643">
 
-Useful when paired with TravisCI to verify that all pull-requests are within the size limit.
+Useful when paired with Travis CI to verify that all pull-requests are within the size limit.
 
 
 ## Install
@@ -17,22 +17,24 @@ $ npm install --save-dev gulp-micro
 ## Usage
 
 ```js
-var gulp = require('gulp');
-var micro = require('gulp-micro');
+const gulp = require('gulp');
+const micro = require('gulp-micro');
 
-gulp.task('default', function () {
-	return gulp.src('src/app.js')
+gulp.task('default', () =>
+	gulp.src('src/app.js')
 		.pipe(micro({limit: 1000}))
-		.pipe(gulp.dest('dist'));
-});
+		.pipe(gulp.dest('dist'))
+);
 ```
 
 
 ## Options
 
+Type: `Object`
+
 ### limit
 
-*Required*  
+*Required*<br>
 Type: `number`
 
 File size limit in bytes.
@@ -45,4 +47,4 @@ Place [gulp-gzip](https://github.com/jstuckey/gulp-gzip) before this plugin to l
 
 ## License
 
-MIT © [Sindre Sorhus](http://sindresorhus.com)
+MIT © [Sindre Sorhus](https://sindresorhus.com)
