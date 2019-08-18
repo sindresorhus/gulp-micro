@@ -1,17 +1,16 @@
 import test from 'ava';
 import Vinyl from 'vinyl';
-import m from '.';
+import pEvent from 'p-event';
+import micro from '.';
 
-test.cb('limits the size of a module', t => {
-	const stream = m({limit: 1000});
-
-	stream.once('error', err => {
-		t.regex(err.message, /fixture\.js/);
-		t.end();
-	});
+test('limits the size of a module', async t => {
+	const stream = micro({limit: 1000});
+	const errorPromise = pEvent(stream);
 
 	stream.end(new Vinyl({
 		path: 'fixture.js',
 		contents: Buffer.alloc(1234)
 	}));
+
+	await t.throwsAsync(errorPromise, {message: /fixture\.js/});
 });

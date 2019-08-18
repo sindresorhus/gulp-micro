@@ -20,7 +20,7 @@ $ npm install --save-dev gulp-micro
 const gulp = require('gulp');
 const micro = require('gulp-micro');
 
-gulp.task('default', () =>
+exports.default = () => (
 	gulp.src('src/app.js')
 		.pipe(micro({limit: 1000}))
 		.pipe(gulp.dest('dist'))
@@ -28,11 +28,15 @@ gulp.task('default', () =>
 ```
 
 
-## Options
+## API
 
-Type: `Object`
+## micro(options?)
 
-### limit
+### options
+
+Type: `object`
+
+#### limit
 
 *Required*<br>
 Type: `number`
@@ -43,8 +47,3 @@ File size limit in bytes.
 ## Tip
 
 Place [gulp-gzip](https://github.com/jstuckey/gulp-gzip) before this plugin to limit the gzipped size.
-
-
-## License
-
-MIT © [Sindre Sorhus](https://sindresorhus.com)
