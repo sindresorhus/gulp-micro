@@ -1,4 +1,4 @@
-# gulp-micro [![Build Status](https://travis-ci.org/sindresorhus/gulp-micro.svg?branch=master)](https://travis-ci.org/sindresorhus/gulp-micro)
+# gulp-micro
 
 > Ensure your micro-lib stays micro
 
