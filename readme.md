@@ -4,15 +4,13 @@
 
 <img src="screenshot.png" width="643">
 
-Useful when paired with Travis CI to verify that all pull-requests are within the size limit.
-
+Useful when paired with a CI to verify that all pull-requests are within the size limit.
 
 ## Install
 
 ```
 $ npm install --save-dev gulp-micro
 ```
-
 
 ## Usage
 
@@ -27,7 +25,6 @@ exports.default = () => (
 );
 ```
 
-
 ## API
 
 ## micro(options?)
@@ -38,11 +35,10 @@ Type: `object`
 
 #### limit
 
-*Required*<br>
+*Required*\
 Type: `number`
 
 File size limit in bytes.
-
 
 ## Tip
 
