@@ -1,35 +1,20 @@
-'use strict';
-const through = require('through2');
-const prettyBytes = require('pretty-bytes');
-const PluginError = require('plugin-error');
+import prettyBytes from 'pretty-bytes';
+import {gulpPlugin} from 'gulp-plugin-extras';
 
-module.exports = (options = {}) => {
-	if (typeof options.limit !== 'number') {
+export default function gulpMicro({limit} = {}) {
+	if (typeof limit !== 'number') {
 		throw new TypeError('gulp-micro: `limit` required');
 	}
 
-	return through.obj((file, encoding, callback) => {
-		if (file.isNull()) {
-			callback(null, file);
-			return;
-		}
-
-		if (file.isStream()) {
-			callback(new PluginError('gulp-micro', 'Streaming not supported'));
-			return;
-		}
-
+	return gulpPlugin('gulp-micro', file => {
 		const size = file.contents.length;
-		const {limit} = options;
 
 		if (size > limit) {
-			callback(new PluginError('gulp-micro', `${file.relative} (${prettyBytes(size)}) exceeds limit of ${prettyBytes(limit)} by ${prettyBytes(size - limit)}`, {
-				fileName: file.path,
-				showStack: false
-			}));
-			return;
+			const error = new Error(`${file.relative} (${prettyBytes(size)}) exceeds limit of ${prettyBytes(limit)} by ${prettyBytes(size - limit)}`);
+			error.isPresentable = true;
+			throw error;
 		}
 
-		callback(null, file);
+		return file;
 	});
-};
+}

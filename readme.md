@@ -8,17 +8,17 @@ Useful when paired with a CI to verify that all pull-requests are within the siz
 
 ## Install
 
-```
-$ npm install --save-dev gulp-micro
+```sh
+npm install --save-dev gulp-micro
 ```
 
 ## Usage
 
 ```js
-const gulp = require('gulp');
-const micro = require('gulp-micro');
+import gulp from 'gulp';
+import micro from 'gulp-micro';
 
-exports.default = () => (
+export default () => (
 	gulp.src('src/app.js')
 		.pipe(micro({limit: 1000}))
 		.pipe(gulp.dest('dist'))

@@ -1,7 +1,8 @@
+import {Buffer} from 'node:buffer';
 import test from 'ava';
 import Vinyl from 'vinyl';
-import pEvent from 'p-event';
-import micro from '.';
+import {pEvent} from 'p-event';
+import micro from './index.js';
 
 test('limits the size of a module', async t => {
 	const stream = micro({limit: 1000});
@@ -9,7 +10,7 @@ test('limits the size of a module', async t => {
 
 	stream.end(new Vinyl({
 		path: 'fixture.js',
-		contents: Buffer.alloc(1234)
+		contents: Buffer.alloc(1234),
 	}));
 
 	await t.throwsAsync(errorPromise, {message: /fixture\.js/});
